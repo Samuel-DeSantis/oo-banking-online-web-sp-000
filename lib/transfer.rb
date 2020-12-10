@@ -1,14 +1,14 @@
 class Transfer
   attr_accessor :sender, :receiver, :amount, :status
 
-  @@amounts_mem = []
+  @@transfers = []
 
   def initialize(sender, receiver, amount)
     @sender = sender
     @receiver = receiver
     @amount = amount
     @status = "pending"
-    transfer_memory
+    transfer_history
   end
 
   def valid?
@@ -31,7 +31,7 @@ class Transfer
     @receiver.balance -= past_amount
   end
 
-  def transfer_memory
-    @@amounts_mem << @amounts
+  def transfer_history
+    @@transfers << self
   end
 end
