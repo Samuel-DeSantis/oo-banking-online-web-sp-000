@@ -21,21 +21,24 @@ class Transfer
       @receiver.balance += @amount
       @status = "complete"
     else
-      @status = "Transaction rejected. Please check your account balance."
+      reject_transfer
     end
     @status
   end
 
   def reverse_transfer
     past_transfer = @@transfers.pop
-    if past_transfer.status == "complete"
+    if valid? && @sender.balance > @amount && self.status == "complete"
       @sender.balance += past_transfer.amount
       @receiver.balance -= past_transfer.amount
       @status = "reversed"
+    else
+      reject_transfer
     end
   end
 
-  def transfer_history
-    @@transfers << self
+  def reject_transfer
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
   end
 end
