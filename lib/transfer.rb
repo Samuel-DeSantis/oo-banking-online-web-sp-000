@@ -29,6 +29,7 @@ class Transfer
     past_transfer = @@transfers.pop
     @sender.balance += past_transfer.amount
     @receiver.balance -= past_transfer.amount
+    @status = "reversed"
   end
 
   def transfer_history
