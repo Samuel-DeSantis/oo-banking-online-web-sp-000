@@ -1,6 +1,8 @@
 class Transfer
   attr_accessor :sender, :receiver, :amount, :status
 
+  PENDING, COMPLETE, REVERESED = "pending", "complete", "reversed"
+
   @@transfers = []
 
   def initialize(sender, receiver, amount)
