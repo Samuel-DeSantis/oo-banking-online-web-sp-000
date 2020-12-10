@@ -27,10 +27,11 @@ class Transfer
 
   def reverse_transfer
     past_transfer = @@transfers.pop
-    if past_transfer.stat
-    @sender.balance += past_transfer.amount
-    @receiver.balance -= past_transfer.amount
-    @status = "reversed"
+    if past_transfer.status == "complete"
+      @sender.balance += past_transfer.amount
+      @receiver.balance -= past_transfer.amount
+      @status = "reversed"
+    end
   end
 
   def transfer_history
