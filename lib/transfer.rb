@@ -1,7 +1,7 @@
 class Transfer
   attr_accessor :sender, :receiver, :amount, :status
 
-  @@amounts = []
+  @@amounts_mem = []
 
   def initialize(sender, receiver, amount)
     @sender = sender
@@ -32,6 +32,6 @@ class Transfer
   end
 
   def transfer_memory
-    @@amounts << @amounts
+    @@amounts_mem << @amounts
   end
 end
