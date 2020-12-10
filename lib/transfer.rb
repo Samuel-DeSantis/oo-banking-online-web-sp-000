@@ -23,14 +23,12 @@ class Transfer
     else
       reject_transfer
     end
-    @status
   end
 
   def reverse_transfer
-    past_transfer = @@transfers.pop
     if valid? && @sender.balance > @amount && self.status == "complete"
-      @sender.balance += past_transfer.amount
-      @receiver.balance -= past_transfer.amount
+      @sender.balance += @amount
+      @receiver.balance -= @amount
       @status = "reversed"
     else
       reject_transfer
