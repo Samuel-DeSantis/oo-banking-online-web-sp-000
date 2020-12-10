@@ -19,7 +19,7 @@ class Transfer
     if valid?
       @sender.balance -= @amount
       @receiver.balance += @amount
-    
+
   end
 
   def reverse_transfer
