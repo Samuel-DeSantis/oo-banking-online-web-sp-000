@@ -8,7 +8,7 @@ class BankAccount
   end
 
   def deposit(deposit)
-    @balance += deposit
+    @balance += deposit if valid?
   end
 
   def display_balance
