@@ -26,7 +26,7 @@ class Transfer
   end
 
   def reverse_transfer
-    past_amount = @@transfer.pop
+    past_amount = @@transfers.pop
     @sender.balance += past_amount
     @receiver.balance -= past_amount
   end
