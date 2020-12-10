@@ -8,7 +8,6 @@ class Transfer
     @receiver = receiver
     @amount = amount
     @status = "pending"
-    transfer_history
   end
 
   def valid?
@@ -22,6 +21,7 @@ class Transfer
     else
       puts "Transaction rejected. Please check your account balance."
     end
+    transfer_history
     @status = "complete"
   end
 
