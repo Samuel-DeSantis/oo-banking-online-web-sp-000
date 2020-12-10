@@ -1,8 +1,6 @@
 class Transfer
   attr_accessor :sender, :receiver, :amount, :status
 
-  PENDING, COMPLETE, REVERESED = "pending", "complete", "reversed"
-
   @@transfers = []
 
   def initialize(sender, receiver, amount)
@@ -24,15 +22,15 @@ class Transfer
       puts "Transaction rejected. Please check your account balance."
     end
     transfer_history
-    @status = COMPLETE
+    @status = "complete"
   end
 
   def reverse_transfer
     past_transfer = @@transfers.pop
-    if past_transfer.status == COMPLETE
+    if past_transfer.stat
     @sender.balance += past_transfer.amount
     @receiver.balance -= past_transfer.amount
-    @status = REVERESED
+    @status = "reversed"
   end
 
   def transfer_history
