@@ -13,12 +13,8 @@ class Transfer
   end
 
   def execute_transaction
-    if @sender.balance >= @amount && valid?
-      @sender.balance -= @amount
-      @receiver.balance += @amount
-    else
-      puts "ERROR #=> Balance exceeds withdraw amount."
-    end
+    @sender.balance -= @amount
+    @receiver.balance += @amount
   end
 
   def reverse_transfer
