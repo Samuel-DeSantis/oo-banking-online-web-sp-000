@@ -24,14 +24,15 @@ class Transfer
       puts "Transaction rejected. Please check your account balance."
     end
     transfer_history
-    @status = "complete"
+    @status = COMPLETE
   end
 
   def reverse_transfer
     past_transfer = @@transfers.pop
+    if past_transfer.status == COMPLETE
     @sender.balance += past_transfer.amount
     @receiver.balance -= past_transfer.amount
-    @status = "reversed"
+    @status = REVERESED
   end
 
   def transfer_history
